@@ -29,6 +29,7 @@ As with any mechanism for prefetching content ahead of time, this needs to be ap
 
 * [Supercharging page-loads with R](http://code.markedmondson.me/predictClickOpenCPU/supercharge.html)
 * [Using Google Analytics to predict clicks](https://www.noisetosignal.io/2016/11/using-google-analytics-to-predict-clicks-and-speed-up-your-website/)
+* [Gatsby's Link](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link) - relies on links entering in the viewport before it attempts to preload them.
 * [Eve Dynamic Prerender](https://wordpress.org/plugins/eve-dynamic-prerender/)
 
 
