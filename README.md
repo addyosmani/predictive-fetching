@@ -13,5 +13,14 @@ With the availability of this data, an engine could insert `<link rel="[prerende
 
 While this approach is sound, the methodology used could be deemed a little complex. Another approach that could be taken (which is simpler) is attempting to get accurate prediction data from the Google Analytics API. If you ran a report for the [Page](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_pagepath) and [Previous Page Path](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_previouspagepath) dimension combined with the [Pageviews](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_pageviews) and [Exits](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_exits) metrics this should provide enough data to wire up prefetches for most popular pages.
 
+### Machine Learning for predictive fetching?
+
+ML could help improve the overall accuracy of a solution's predictions, but is not a necessity for an initial implementation. Predictive fetching could be accomplished by training a model on the pages users are likely to visit and improving on this model over time. 
+
+Deep neural networks are particularly good at teasing out the complexities that may lead to a user choosing one page over another, in particular, if we wanted to attempt a version of the solution that was catered to the pages an individual user might visit vs. the pages a "general/median" user might visit next. Fixed page sequences (prev, current, next) might be the easiest to begin dealing with initially. This means building a model that is unique to your set of documents. 
+
+Model updates tend to be done periodically, so one might setup a nightly/weekly job to refresh based on new user behaviour. This could be done in real-time, but is likely complex, so doing it periodically might be sufficient. One could imagine a generic model representing behavioural patterns for users on a site that can eitehr be driven by a trained status set, Google Analytics, or a custom description you plugin using a new layer into a router giving the site the ability to predictively fetch future pages, improving page load performance.
+
+
 
 
