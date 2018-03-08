@@ -21,6 +21,16 @@ Deep neural networks are particularly good at teasing out the complexities that 
 
 Model updates tend to be done periodically, so one might setup a nightly/weekly job to refresh based on new user behaviour. This could be done in real-time, but is likely complex, so doing it periodically might be sufficient. One could imagine a generic model representing behavioural patterns for users on a site that can eitehr be driven by a trained status set, Google Analytics, or a custom description you plugin using a new layer into a router giving the site the ability to predictively fetch future pages, improving page load performance.
 
+## Risks
+
+As with any mechanism for prefetching content ahead of time, this needs to be approached very carefully. A user on a restricted data-plan may not appreciate or benefit as much from pages being fetched ahead of time, in particular if they start to eat up their data. There are mechanisms a site/solution could take to be mindful of this concern, such as respecting the [Save-Data](https://developers.google.com/web/updates/2016/02/save-data) header. 
+
+## Prior work
+
+* [Supercharging page-loads with R](http://code.markedmondson.me/predictClickOpenCPU/supercharge.html)
+* [Using Google Analytics to predict clicks](https://www.noisetosignal.io/2016/11/using-google-analytics-to-predict-clicks-and-speed-up-your-website/)
+* [Eve Dynamic Prerender](https://wordpress.org/plugins/eve-dynamic-prerender/)
+
 
 
 
