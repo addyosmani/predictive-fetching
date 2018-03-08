@@ -23,7 +23,14 @@ Model updates tend to be done periodically, so one might setup a nightly/weekly 
 
 ## Risks
 
+### Data consumption
+
 As with any mechanism for prefetching content ahead of time, this needs to be approached very carefully. A user on a restricted data-plan may not appreciate or benefit as much from pages being fetched ahead of time, in particular if they start to eat up their data. There are mechanisms a site/solution could take to be mindful of this concern, such as respecting the [Save-Data](https://developers.google.com/web/updates/2016/02/save-data) header. 
+
+### Web Standards
+
+Some of the attempts to accomplish similar proposals in the past have relied on `<link rel=prerender>`. The Chrome team is currently exploring [deprecating rel=prerender](https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/0nSxuuv9bBw) in favor of [NoStatePrefetch](https://docs.google.com/document/d/16VCYGGWau483IMSxODpg5faZny1FJ6vNK2v-BuM5EhU/edit#) - a lighter version of this mechanism that only prefetches to the HTTP cache but uses no other state of the web platform. A solution should factor in whether it will be relying on the replacement to rel=prerender or using prefetch/preload/other approaches.
+
 
 ## Prior work
 
