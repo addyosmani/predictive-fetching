@@ -38,6 +38,7 @@ Some of the attempts to accomplish similar proposals in the past have relied on 
 * [Using Google Analytics to predict clicks](https://www.noisetosignal.io/2016/11/using-google-analytics-to-predict-clicks-and-speed-up-your-website/)
 * [Gatsby's Link](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link) - relies on links entering in the viewport before it attempts to preload them.
 * [Eve Dynamic Prerender](https://wordpress.org/plugins/eve-dynamic-prerender/)
+* [InstartLogic - Multi-page Predictive Prefetching](https://www.instartlogic.com/blog/predicting-future-multi-page-predictive-prefetching)
 
 
 
