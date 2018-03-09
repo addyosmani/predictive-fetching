@@ -13,7 +13,7 @@ With the availability of this data, an engine could insert `<link rel="[prerende
 
 While this approach is sound, the methodology used could be deemed a little complex. Another approach that could be taken (which is simpler) is attempting to get accurate prediction data from the Google Analytics API. If you ran a report for the [Page](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_pagepath) and [Previous Page Path](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_previouspagepath) dimension combined with the [Pageviews](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_pageviews) and [Exits](https://developers.google.com/analytics/devguides/reporting/core/dimsmets#view=detail&group=page_tracking&jump=ga_exits) metrics this should provide enough data to wire up prefetches for most popular pages.
 
-### Machine Learning for predictive fetching?
+### Machine Learning for predictive fetching
 
 ML could help improve the overall accuracy of a solution's predictions, but is not a necessity for an initial implementation. Predictive fetching could be accomplished by training a model on the pages users are likely to visit and improving on this model over time. 
 
@@ -29,7 +29,14 @@ As with any mechanism for prefetching content ahead of time, this needs to be ap
 
 ### Web Standards
 
+#### Future of rel=prerender
 Some of the attempts to accomplish similar proposals in the past have relied on `<link rel=prerender>`. The Chrome team is currently exploring [deprecating rel=prerender](https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/0nSxuuv9bBw) in favor of [NoStatePrefetch](https://docs.google.com/document/d/16VCYGGWau483IMSxODpg5faZny1FJ6vNK2v-BuM5EhU/edit#) - a lighter version of this mechanism that only prefetches to the HTTP cache but uses no other state of the web platform. A solution should factor in whether it will be relying on the replacement to rel=prerender or using prefetch/preload/other approaches.
+
+There are two key differences between NoStatePrefetch and Prefetch
+
+1. nostate-prefetch is a mechanism, and `<link rel=prefetch>` is an API. The nostate-prefetch can be requested by other entry points: omnibox prediction, custom tabs, `<link rel=prerender>`.
+
+2. The implementation is different: `<link rel=prefetch>` prefetches one resource, but nostate-prefetch on top of that runs the preload scanner on the resource (in a fresh new renderer), discovers subresources and prefetches them as well (without recursing into preload scanner).
 
 
 ## Prior work
