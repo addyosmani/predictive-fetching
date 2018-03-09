@@ -3,7 +3,7 @@ Improve performance by predictively fetching pages a user is likely to need
 
 ## Overview
 
-This proposal outlines an idea for applying a data-driven approach to optimizing loading performance on the web. By building a model of pages a user is likely to visit, given an arbitrary entry-page, a solution could calculate the liklihood a user will visit a given next page or set of pages and prefetch resources for them while the user is still viewing their current page. This has the possibility of improving page-load performance for subsequent page visits as there's a strong chance a page will already be in the user's cache.
+This proposal outlines an idea for applying a data-driven approach to optimizing loading performance on the web. By building a model of pages a user is likely to visit, given an arbitrary entry-page, a solution could calculate the likelihood a user will visit a given next page or set of pages and prefetch resources for them while the user is still viewing their current page. This has the possibility of improving page-load performance for subsequent page visits as there's a strong chance a page will already be in the user's cache.
 
 ## Approach 
 
