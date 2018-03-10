@@ -38,6 +38,27 @@ There are two key differences between NoStatePrefetch and Prefetch
 
 2. The implementation is different: `<link rel=prefetch>` prefetches one resource, but nostate-prefetch on top of that runs the preload scanner on the resource (in a fresh new renderer), discovers subresources and prefetches them as well (without recursing into preload scanner).
 
+## Methods of predictively fetching content
+
+### Speculative prefetch on page load
+
+Speculative prefetch can prefetch pages likely be navigated to on page load. This assumes the existence of knowledge about the probability a page will need a certain next page or set of pages, or a training model that can provide a data-driven approach to determining such probabilities.
+
+Prefetching on page load can be accomplished in a number of ways, from deferring to the UA to decide when to prefetch resources (e.g at low priority with `<link rel=prefetch>`), during page idle time (via `requestIdleCallback()`) or at some other interval. No further interaction is required by the user. 
+
+### Speculative prefetch when links come into the viewport
+
+A page could speculatively begin prefetching content when links in the page are visible in the viewport, signifying that the user may have a higher chance of wanting to click on them.
+
+This is an approach used by Gatsby (which uses React and React Router). Their specific implementation is as follows:
+
+* In browsers that support IntersectionObserver, whenever a `<Link>` component becomes invisible, the link "votes" for the page linked to to be prefetched votes are worth slightly less points each time so links at the top of the page are prioritized over ones lower down 
+* e.g. the top nav if a page is linked to multiple times, its vote count goes higher the prefetcher takes the top page and starts prefetching resources. 
+* It's restricted to prefetching one page at a time so as to reduce contention over bandwidth with on page stuff (not a problem on fast networks. If a user visits a page and its resources haven't been fully downloaded, prefetching stops until the page is loaded to ensure the user waits as little time as possible.
+
+### Speculative prefetch on user interaction
+
+A page could begin speculatively prefetching resources when a user indicates they are interested in some content. This can take many forms, including when a user chooses to hover over a link or some portion of UI that would navigate them to a separate page. The browser could begin fetching content for the link as soon as there was a clear indication of interest. This is an approach taken by JavaScript libraries such as [InstantClick](http://instantclick.io/).
 
 ## Prior work
 
