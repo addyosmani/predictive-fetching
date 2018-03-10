@@ -46,6 +46,7 @@ There are two key differences between NoStatePrefetch and Prefetch
 * [Gatsby's Link](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-link) - relies on links entering in the viewport before it attempts to preload them.
 * [Eve Dynamic Prerender](https://wordpress.org/plugins/eve-dynamic-prerender/)
 * [InstartLogic - Multi-page Predictive Prefetching](https://www.instartlogic.com/blog/predicting-future-multi-page-predictive-prefetching)
+* [Sirko Engine](https://github.com/sirko-io/engine) - relies on Service Worker
 
 
 
