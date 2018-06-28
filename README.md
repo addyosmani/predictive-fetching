@@ -52,7 +52,7 @@ A page could speculatively begin prefetching content when links in the page are 
 
 This is an approach used by Gatsby (which uses React and React Router). Their specific implementation is as follows:
 
-* In browsers that support IntersectionObserver, whenever a `<Link>` component becomes invisible, the link "votes" for the page linked to to be prefetched votes are worth slightly less points each time so links at the top of the page are prioritized over ones lower down 
+* In browsers that support IntersectionObserver, whenever a `<Link>` component becomes visible, the link "votes" for the page linked to to be prefetched. Votes are worth slightly less points each time so links at the top of the page are prioritized over ones lower down 
 * e.g. the top nav if a page is linked to multiple times, its vote count goes higher the prefetcher takes the top page and starts prefetching resources. 
 * It's restricted to prefetching one page at a time so as to reduce contention over bandwidth with on page stuff (not a problem on fast networks. If a user visits a page and its resources haven't been fully downloaded, prefetching stops until the page is loaded to ensure the user waits as little time as possible.
 
